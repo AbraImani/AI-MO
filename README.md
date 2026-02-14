@@ -1,11 +1,14 @@
 # 🏆 AIMO3 — AI Mathematical Olympiad Progress Prize 3
 
+> **Status:** Draft v0.1  
+> **Last Updated:** 14 February 2026 
+> **Author:** Abraham Imani Bahati
 > **High-performance hybrid reasoning system for solving 110 olympiad-level math problems**  
 > Kaggle Competition: [AI Mathematical Olympiad – Progress Prize 3](https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-3)
 
 ---
 
-## 🎯 Competition Overview
+## Competition Overview
 
 | Detail | Value |
 |--------|-------|
@@ -18,7 +21,7 @@
 
 ---
 
-## 🧠 Architecture
+## Architecture
 
 ```
 Problem ──► LaTeX Cleaner ──► Problem Analyzer
@@ -62,7 +65,7 @@ Problem ──► LaTeX Cleaner ──► Problem Analyzer
 
 ---
 
-## 🚀 Key Design Decisions
+## Key Design Decisions
 
 ### Why Qwen2.5-Math-7B-Instruct?
 - **#1 open-source math model** at 7B parameters on MATH, GSM8K, and competition benchmarks
@@ -83,26 +86,26 @@ Problem ──► LaTeX Cleaner ──► Problem Analyzer
 - First attempt is **greedy** (deterministic), remaining 4 are **sampled** (temperature=0.7)
 
 ### Robustness Features
-- ✅ LaTeX normalization prevents format failures
-- ✅ Sandbox timeout (30s) prevents infinite loops
-- ✅ Per-problem timeout (5 min) ensures all problems attempted
-- ✅ Fallback to `0` on critical failures
-- ✅ GPU memory cleanup between problems
-- ✅ Handles all answer ranges `[0, 99999]`
+- LaTeX normalization prevents format failures
+- Sandbox timeout (30s) prevents infinite loops
+- Per-problem timeout (5 min) ensures all problems attempted
+- Fallback to `0` on critical failures
+- GPU memory cleanup between problems
+- Handles all answer ranges `[0, 99999]`
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 AI-MO/
-├── aimo3-solution.ipynb    # Complete Kaggle submission notebook
-└── README.md               # This file
+── aimo3-solution.ipynb    # Complete Kaggle submission notebook
+── README.md               # This file
 ```
 
 ---
 
-## 🔧 Setup & Usage
+## Setup & Usage
 
 ### On Kaggle (Competition Submission)
 
@@ -132,7 +135,7 @@ Set `LOCAL_TEST = True` in the last cell to test against reference problems.
 
 ---
 
-## 📊 Performance Budget
+## Performance Budget
 
 | Phase | Time per Problem | Total (50 problems) |
 |-------|-----------------|---------------------|
@@ -146,7 +149,7 @@ Well within Kaggle's **5-hour GPU limit**.
 
 ---
 
-## 🏅 Competition Details
+## Competition Details
 
 - **Competition**: [AI Mathematical Olympiad – Progress Prize 3](https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-3)
 - **Host**: XTX Markets / AI|MO
@@ -157,7 +160,7 @@ Well within Kaggle's **5-hour GPU limit**.
 
 ---
 
-## 📚 References
+## References
 
 - [Qwen2.5-Math Technical Report](https://arxiv.org/abs/2409.12122)
 - [Self-Consistency Improves Chain of Thought Reasoning](https://arxiv.org/abs/2203.11171)
@@ -167,7 +170,7 @@ Well within Kaggle's **5-hour GPU limit**.
 
 ---
 
-## 📄 License
+## License
 
 This project is released under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
 
