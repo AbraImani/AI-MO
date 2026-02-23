@@ -23,32 +23,29 @@
 
 ## Architecture
 
-```
-Problem ──► LaTeX Cleaner ──► Problem Analyzer
-                                    │
-                   ┌────────────────┼────────────────┐
-                   ▼                ▼                ▼
-             TIR Attempt 1    TIR Attempt 2   ...  Att. N
-             (greedy)         (temp=0.7)       (temp=0.7)
-                   │                │                │
-             ┌─────┴─────┐   ┌─────┴─────┐   ┌────┴────┐
-             │ Code Exec │   │ Code Exec │   │Code Exec│
-             │ (Sandbox) │   │ (Sandbox) │   │(Sandbox)│
-             └─────┬─────┘   └─────┬─────┘   └────┬────┘
-                   │                │                │
-             ┌─────┴─────┐   ┌─────┴─────┐   ┌────┴────┐
-             │  Extract  │   │  Extract  │   │ Extract │
-             │  Answer   │   │  Answer   │   │ Answer  │
-             └─────┬─────┘   └─────┬─────┘   └────┬────┘
-                   └────────────────┼────────────────┘
-                                    ▼
-                          Majority Vote (code-preferred)
-                                    │
-                                    ▼
-                          Final Answer [0, 99999]
-                                    │
-                                    ▼
-                         Kaggle Submission API
+```mermaid
+flowchart TD
+    A["🧾 Problem"] --> B["LaTeX Cleaner"]
+    B --> C["Problem Analyzer"]
+
+    C --> D1["TIR Attempt 1\n(greedy)"]
+    C --> D2["TIR Attempt 2\n(temp=0.7)"]
+    C --> DN["... TIR Attempt N\n(temp=0.7)"]
+
+    D1 --> E1["Code Exec\n(Sandbox)"]
+    D2 --> E2["Code Exec\n(Sandbox)"]
+    DN --> EN["Code Exec\n(Sandbox)"]
+
+    E1 --> F1["Extract Answer"]
+    E2 --> F2["Extract Answer"]
+    EN --> FN["Extract Answer"]
+
+    F1 --> G["Majority Vote\n(code-preferred)"]
+    F2 --> G
+    FN --> G
+
+    G --> H["Final Answer\n[0, 99999]"]
+    H --> I["📤 Kaggle Submission API"]
 ```
 
 ### Core Components
